@@ -1,6 +1,6 @@
 {
   "name": "@ryanflorence/persist-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Form persistence for browser applications",
   "author": "Ryan Florence <rpflorence@gmail.com>",
   "repository": {
