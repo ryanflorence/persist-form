@@ -1,6 +1,6 @@
 # persist-form
 
-Simple form persistence for browser applications. Automatically saves form state to sessionStorage as users type and restores it when they return. Includes optional React Router components and hooks.
+Form persistence for browser applications. Automatically saves form state to sessionStorage as users type and restores it when they return. Includes optional React Router components and hooks.
 
 ## Installation
 
