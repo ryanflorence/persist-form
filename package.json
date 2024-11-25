@@ -1,0 +1,41 @@
+{
+  "name": "@ryanflorence/persist-form",
+  "version": "0.0.1",
+  "description": "Intelligently batch naive calls to load records",
+  "author": "Ryan Florence <rpflorence@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanflorence/persist-form.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/persist-form.js",
+    "./react": "./dist/react.js",
+    "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.4.1",
+    "@types/react": "^18.3.12",
+    "prettier": "^3.3.3",
+    "tsimp": "^2.0.11",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.lib.json",
+    "watch": "tsc --project tsconfig.lib.json --watch",
+    "test": "node --import tsimp/import --test ./src/**/*.spec.ts",
+    "test:watch": "node --import tsimp/import --test --watch ./src/**/*.spec.ts",
+    "prepare": "pnpm run build"
+  },
+  "packageManager": "pnpm@9.7.1",
+  "optionalDependencies": {
+    "react": "^18.3.1",
+    "react-router": "^7.0.1"
+  }
+}
