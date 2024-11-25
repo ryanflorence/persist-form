@@ -33,9 +33,5 @@
     "test:watch": "node --import tsimp/import --test --watch ./src/**/*.spec.ts",
     "prepare": "pnpm run build"
   },
-  "packageManager": "pnpm@9.7.1",
-  "optionalDependencies": {
-    "react": "^18.3.1",
-    "react-router": "^7.0.1"
-  }
+  "packageManager": "pnpm@9.7.1"
 }
