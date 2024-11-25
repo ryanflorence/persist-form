@@ -7,13 +7,6 @@ settings:
 importers:
 
   .:
-    optionalDependencies:
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-router:
-        specifier: ^7.0.1
-        version: 7.0.1(react@18.3.1)
     devDependencies:
       '@types/node':
         specifier: ^22.4.1
@@ -24,6 +17,12 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-router:
+        specifier: ^7.0.1
+        version: 7.0.1(react@18.3.1)
       tsimp:
         specifier: ^2.0.11
         version: 2.0.11(typescript@5.5.4)
@@ -279,8 +278,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@types/cookie@0.6.0':
-    optional: true
+  '@types/cookie@0.6.0': {}
 
   '@types/node@22.5.0':
     dependencies:
@@ -315,8 +313,7 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  cookie@1.0.2:
-    optional: true
+  cookie@1.0.2: {}
 
   cross-spawn@7.0.3:
     dependencies:
@@ -356,13 +353,11 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  js-tokens@4.0.0:
-    optional: true
+  js-tokens@4.0.0: {}
 
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
-    optional: true
 
   lru-cache@10.4.3: {}
 
@@ -394,19 +389,16 @@ snapshots:
       react: 18.3.1
       set-cookie-parser: 2.7.1
       turbo-stream: 2.4.0
-    optional: true
 
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
-    optional: true
 
   rimraf@5.0.10:
     dependencies:
       glob: 10.4.5
 
-  set-cookie-parser@2.7.1:
-    optional: true
+  set-cookie-parser@2.7.1: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -457,8 +449,7 @@ snapshots:
       typescript: 5.5.4
       walk-up-path: 3.0.1
 
-  turbo-stream@2.4.0:
-    optional: true
+  turbo-stream@2.4.0: {}
 
   typescript@5.5.4: {}
 
