@@ -1,6 +1,6 @@
 {
   "name": "@ryanflorence/persist-form",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Intelligently batch naive calls to load records",
   "author": "Ryan Florence <rpflorence@gmail.com>",
   "repository": {
