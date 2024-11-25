@@ -1,0 +1,49 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    paths:
+      - "src/**"
+
+env:
+  PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      # Add cache for Playwright browsers and dependencies
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - run: pnpm install
+
+      - run: pnpm run typecheck
+
+      - name: Install Playwright Dependencies
+        # Only install if cache miss
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install chromium --with-deps
+
+      - run: pnpm test

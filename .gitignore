@@ -1,5 +1,4 @@
-.tsimp
-dist
 node_modules
 
-*.tsbuildinfo
+/dist
+__screenshots__

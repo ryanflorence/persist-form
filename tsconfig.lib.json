@@ -1,11 +1,16 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts"],
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "jsx": "react-jsx",
+
     "declaration": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.*"]
 }
