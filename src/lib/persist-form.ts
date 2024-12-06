@@ -11,6 +11,10 @@ export function restore(key: string, form: HTMLFormElement) {
   let values = JSON.parse(storage) as Record<string, any>;
   Object.entries(values).forEach(([name, value]) => {
     let input = form.elements.namedItem(name) as HTMLInputElement;
+    if (!input) {
+      console.warn(`Could not find "${name}" input to restore ${value}`);
+      return;
+    }
     if (input.type === "radio") {
       input.checked = input.value === value;
     } else if (input.type === "checkbox") {

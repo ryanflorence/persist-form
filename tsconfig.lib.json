@@ -6,7 +6,6 @@
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,
-    "sourceMap": true,
-    "module": "CommonJS"
+    "sourceMap": true
   }
 }

@@ -13,7 +13,7 @@
     "LICENSE",
     "README.md"
   ],
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": "./dist/persist-form.js",
     "./react": "./dist/react.js",
