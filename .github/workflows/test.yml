@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "src/**"
+      - "package.json"
     branches:
       - "main"
     tags-ignore:
