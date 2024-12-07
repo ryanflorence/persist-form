@@ -24,6 +24,7 @@
   "exports": {
     ".": "./dist/persist-form.js",
     "./react": "./dist/react.js",
+    "./html": "./dist/html.js",
     "./package.json": "./package.json"
   },
   "peerDependencies": {
