@@ -3,14 +3,12 @@ import * as pf from "./persist-form.js";
 
 it("persists forms", async () => {
   let markup = html`
-    <form>
-      <input id="name" type="text" name="name" />
-      <input id="age" type="number" name="age" />
-      <input id="active" type="radio" name="active" value="1" />
-      <input id="inactive" type="radio" name="active" value="0" />
-      <input id="married" type="checkbox" name="married" />
-      <textarea id="bio" name="bio"></textarea>
-    </form>
+    <input id="name" type="text" name="name" />
+    <input id="age" type="number" name="age" />
+    <input id="active" type="radio" name="active" value="1" />
+    <input id="inactive" type="radio" name="active" value="0" />
+    <input id="married" type="checkbox" name="married" />
+    <textarea id="bio" name="bio"></textarea>
   `;
 
   // initial form state

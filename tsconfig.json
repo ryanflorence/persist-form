@@ -5,7 +5,8 @@
     "moduleResolution": "NodeNext",
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "types": ["@vitest/browser/providers/playwright"]
   },
   "include": ["src"]
 }

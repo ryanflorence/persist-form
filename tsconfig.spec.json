@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "types": ["@vitest/browser/providers/playwright"],
-    "noEmit": true
-  }
-}
