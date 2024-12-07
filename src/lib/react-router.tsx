@@ -5,6 +5,10 @@ import { clear, persist, restore } from "./persist-form.js";
 /**
  * Utilities for persisting form values to session storage for the current React
  * Router location.
+ *
+ * ```tsx
+ * import { usePersistedForm } from "@ryanflorence/persist-form/react";
+ * ```
  */
 export function usePersistedForm() {
   let location = useLocation();
