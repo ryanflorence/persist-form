@@ -6,7 +6,8 @@
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "types": ["@vitest/browser/providers/playwright"]
+    "types": ["@vitest/browser/providers/playwright"],
+    "noEmit": true
   },
   "include": ["src"]
 }
