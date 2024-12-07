@@ -1,49 +1,61 @@
-import { Form, type FormProps, useLocation } from "react-router";
-import {
-  type FormEvent,
-  forwardRef,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-} from "react";
+import { useLocation } from "react-router";
+import { useMemo } from "react";
 import { clear, persist, restore } from "./persist-form.js";
-import { mergeRefs } from "../vendor/react-merge-refs.js";
 
+/**
+ * Utilities for persisting form values to session storage for the current React
+ * Router location.
+ */
 export function usePersistedForm() {
   let location = useLocation();
 
   return useMemo(
     () => ({
       /**
-       * Persists form values to session storage for the current location.
+       * Persists a form values to session storage for the current location as a
+       * ref.  Requires React 19.
        *
+       * ```tsx
+       * let { persistFormRef } = usePersistedForm();
+       * <form ref={persistFormRef} />
+       * ```
+       */
+      persistFormRef: (form: HTMLFormElement | null) => {
+        if (form) {
+          restore(location.key, form);
+        }
+        return () => {
+          if (form) {
+            persist(location.key, form);
+          }
+        };
+      },
+
+      /**
+       * Persists form values to session storage for the current location.
        *
        * ```tsx
        * let { persist } = usePersistedForm();
        *
+       * // on a form event
+       * <form onChange={e => persist(e.currentTarget)} />
+       *
+       * // or anywhere you have a form ref
        * useEffect(() => {
        *   persist(someFormRef.current)
-       * }, [someValue])
+       * }, [])
+       *
        * ```
        */
       persist: (form: HTMLFormElement) => persist(location.key, form),
 
       /**
-       * On a form event, persists form values to session storage for the current location.
-       *
-       * ```tsx
-       * let { persist } = usePersistedForm();
-       * <form onChange={persist} />
-       * ```
-       */
-      persistFormEvent: (event: FormEvent<HTMLFormElement>) =>
-        persist(location.key, event.currentTarget),
-
-      /**
-       * Restores form values at the current location.
+       * Restores form values at the current location from session storage.
        *
        * ```tsx
        * let { restore } = usePersistedForm();
+       *
+       * // as a ref (React 18 compatible)
        * <form ref={restore} />
        *
        * // or anywhere you have a form ref
@@ -64,48 +76,4 @@ export function usePersistedForm() {
     }),
     [location.key],
   );
-}
-
-/**
- * Wraps React Router `Form` to persist form values by location.
- */
-export let PersistedForm = forwardRef<HTMLFormElement, FormProps>(
-  (props, forwardedRef) => {
-    let { restore, persistFormEvent } = usePersistedForm();
-    let localRef = useRef<HTMLFormElement>(null);
-    let ref = mergeRefs<HTMLFormElement>([localRef, forwardedRef]);
-
-    useLayoutEffect(() => {
-      restore(localRef.current);
-    }, []);
-
-    return (
-      <Form
-        ref={ref}
-        {...props}
-        onChange={event => {
-          props.onChange?.(event);
-          if (event.defaultPrevented) return;
-          persistFormEvent(event);
-        }}
-      />
-    );
-  },
-);
-
-/**
- * Returns props to be spread on a form element to persist form values by
- * location.
- *
- * ```tsx
- * let formProps = usePersistedFormProps();
- * <fetcher.Form {...formProps} />
- * ```
- */
-export function usePersistedFormProps() {
-  let { restore, persistFormEvent } = usePersistedForm();
-  return {
-    ref: restore,
-    onChange: persistFormEvent,
-  };
 }

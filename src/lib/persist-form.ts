@@ -1,11 +1,11 @@
-export function persist(key: string, form: HTMLFormElement) {
+export function persist(key: string, form: HTMLFormElement): void {
   sessionStorage.setItem(
     `persist-form:${key}`,
     JSON.stringify(Object.fromEntries(new FormData(form))),
   );
 }
 
-export function restore(key: string, form: HTMLFormElement) {
+export function restore(key: string, form: HTMLFormElement): void {
   let storage = sessionStorage.getItem(`persist-form:${key}`);
   if (!storage) return;
   let values = JSON.parse(storage) as Record<string, any>;
@@ -25,6 +25,6 @@ export function restore(key: string, form: HTMLFormElement) {
   });
 }
 
-export function clear(key: string) {
-  sessionStorage.removeItem(key);
+export function clear(key: string): void {
+  sessionStorage.removeItem(`persist-form:${key}`);
 }

@@ -1,49 +1,52 @@
 {
   "name": "@ryanflorence/persist-form",
+  "license": "MIT",
   "version": "0.0.8",
   "description": "Form persistence for browser applications",
   "author": "Ryan Florence <rpflorence@gmail.com>",
+  "packageManager": "pnpm@9.6.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanflorence/persist-form.git"
   },
-  "license": "MIT",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc -p tsconfig.lib.json"
+  },
+  "type": "module",
   "files": [
     "dist",
     "LICENSE",
     "README.md"
   ],
-  "type": "module",
   "exports": {
     ".": "./dist/persist-form.js",
     "./react": "./dist/react.js",
     "./package.json": "./package.json"
   },
-  "devDependencies": {
-    "@types/node": "^22.4.1",
-    "@types/react": "^18.3.12",
-    "prettier": "^3.3.3",
-    "tsimp": "^2.0.11",
-    "typescript": "^5.5.4"
-  },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-router": "^7.0.1"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-router": "^6.0.0 || ^7.0.0"
   },
   "peerDependenciesMeta": {
-    "react-router": {
+    "react": {
       "optional": true
     },
-    "react": {
+    "react-router": {
       "optional": true
     }
   },
-  "scripts": {
-    "build": "tsc --project tsconfig.lib.json",
-    "watch": "tsc --project tsconfig.lib.json --watch",
-    "test": "node --import tsimp/import --test ./src/**/*.spec.ts",
-    "test:watch": "node --import tsimp/import --test --watch ./src/**/*.spec.ts",
-    "prepare": "pnpm run build"
-  },
-  "packageManager": "pnpm@9.7.1"
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/browser": "^2.1.0",
+    "playwright": "^1.46.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.0.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.0",
+    "vitest-browser-react": "^0.0.4"
+  }
 }

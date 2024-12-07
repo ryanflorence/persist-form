@@ -1,11 +1,13 @@
-import type { Route } from "./+types/home";
-import { PersistedForm } from "../../../../dist/react";
+import { usePersistedForm } from "../../../../dist/react";
 
-export default function NewNote({}: Route.ComponentProps) {
+export default function NewNote() {
+  let { persistFormRef } = usePersistedForm();
   return (
-    <PersistedForm
+    <form
+      ref={persistFormRef}
       method="post"
       className="m-auto space-y-6 bg-white p-6 rounded-lg shadow-sm max-w-2xl"
+      onSubmit={event => event.preventDefault()}
     >
       <div className="space-y-2">
         <label
@@ -81,6 +83,6 @@ export default function NewNote({}: Route.ComponentProps) {
       >
         Go!
       </button>
-    </PersistedForm>
+    </form>
   );
 }

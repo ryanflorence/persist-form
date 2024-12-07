@@ -1,1 +1,1 @@
-export { persist, restore, clear } from "./lib/persist-form.js";
+export { clear, persist, restore } from "./lib/persist-form.js";

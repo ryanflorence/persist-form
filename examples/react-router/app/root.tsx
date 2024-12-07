@@ -36,11 +36,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <nav className="p-4 text-center">
           <Link className="text-blue-500" to="/">
-            Home
+            Form
           </Link>{" "}
           |{" "}
-          <Link className="text-blue-500" to="/form">
-            Form
+          <Link className="text-blue-500" to="/other">
+            Other Page
           </Link>
         </nav>
         {children}
