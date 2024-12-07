@@ -12,7 +12,8 @@
   "scripts": {
     "test": "vitest",
     "build": "tsc -p tsconfig.lib.json",
-    "typecheck": "tsc -p tsconfig.lib.json --noEmit"
+    "typecheck": "tsc -p tsconfig.lib.json --noEmit",
+    "prepare": "pnpm run build"
   },
   "type": "module",
   "files": [
