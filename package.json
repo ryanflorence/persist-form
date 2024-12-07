@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "tsc -p tsconfig.lib.json"
+    "build": "tsc -p tsconfig.lib.json",
+    "typecheck": "tsc -p tsconfig.lib.json --noEmit"
   },
   "type": "module",
   "files": [
