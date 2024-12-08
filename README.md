@@ -28,8 +28,8 @@ Then render it inside a form.
 
 If no key is given, `window.location.pathname` is used.
 
-<summary>
-<details>Here's a copy/paste example to see it in action:</details>
+<details>
+<summary>Full copy/paste example</summary>
 
 ```html
 <html>
@@ -70,7 +70,7 @@ If no key is given, `window.location.pathname` is used.
 </html>
 ```
 
-</summary>
+</details>
 
 ### React Router Integration
 
