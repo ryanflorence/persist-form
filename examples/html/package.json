@@ -1,0 +1,10 @@
+{
+  "name": "html",
+  "scripts": {
+    "prestart": "cp -R ../../dist/ persist-form/",
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

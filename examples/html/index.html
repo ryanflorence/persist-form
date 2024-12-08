@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <button>Toggle form</button>
+
+    <div id="target"></div>
+
+    <template id="my-form">
+      <form method="post" class="login-form">
+        <rf-persist-form key="login" />
+
+        <input name="name" />
+        <input name="email" type="email" />
+        <button type="submit">Submit</button>
+      </form>
+    </template>
+
+    <script type="module">
+      // import "https://esm.sh/@ryanflorence/persist-form/html.js";
+      import "/persist-form/html.js";
+      document.querySelector("button").addEventListener("click", () => {
+        let target = document.querySelector("#target");
+        let form = document.querySelector(".login-form");
+        if (form) {
+          target.removeChild(form);
+        } else {
+          form = document.querySelector("#my-form").content.cloneNode(true);
+          target.appendChild(form);
+        }
+      });
+    </script>
+  </body>
+</html>
