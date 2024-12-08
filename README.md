@@ -116,6 +116,18 @@ function MyForm() {
 }
 ```
 
+#### Custom Key
+
+By default the `location.key` is used, but you can provide a custom key.
+
+```tsx
+// not attached to locations
+usePersistedForm("login-form");
+
+// use the URL instead of location.key
+usePersistedForm(location.pathname);
+```
+
 ### Core Package
 
 Integrate with any setup:

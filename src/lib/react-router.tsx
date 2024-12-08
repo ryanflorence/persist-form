@@ -10,8 +10,9 @@ import { clear, persist, restore } from "./persist-form.js";
  * import { usePersistedForm } from "@ryanflorence/persist-form/react";
  * ```
  */
-export function usePersistedForm() {
+export function usePersistedForm(key?: string) {
   let location = useLocation();
+  let persistKey = key || location.key;
 
   return useMemo(
     () => ({
@@ -26,11 +27,11 @@ export function usePersistedForm() {
        */
       persistFormRef: (form: HTMLFormElement | null) => {
         if (form) {
-          restore(location.key, form);
+          restore(persistKey, form);
         }
         return () => {
           if (form) {
-            persist(location.key, form);
+            persist(persistKey, form);
           }
         };
       },
@@ -51,7 +52,7 @@ export function usePersistedForm() {
        *
        * ```
        */
-      persist: (form: HTMLFormElement) => persist(location.key, form),
+      persist: (form: HTMLFormElement) => persist(persistKey, form),
 
       /**
        * Restores form values at the current location from session storage.
@@ -70,14 +71,14 @@ export function usePersistedForm() {
        */
       restore: (form: HTMLFormElement | null) => {
         if (!form) return;
-        restore(location.key, form);
+        restore(persistKey, form);
       },
 
       /**
        * Clears form values from session storage for the current location
        */
-      clear: () => clear(location.key),
+      clear: () => clear(persistKey),
     }),
-    [location.key],
+    [persistKey],
   );
 }

@@ -95,6 +95,27 @@ test("persist/restore/clear", async () => {
   expect.element(screen.getByPlaceholder("your name")).toHaveValue("");
 });
 
+test("custom key", async () => {
+  function Subject() {
+    let { persistFormRef } = usePersistedForm("my-form");
+    return (
+      <form ref={persistFormRef}>
+        <input name="name" placeholder="your name" />
+      </form>
+    );
+  }
+
+  let NAME = "Ryan Florence";
+  let screen = render(<App subject={<Subject />} />);
+
+  await screen.getByPlaceholder("your name").fill(NAME);
+  await screen.getByRole("link", { name: "about link" }).click(); // [f1, a1*]
+  await screen.getByRole("link", { name: "form link" }).click(); //  [f1, a1, f2*]
+  expect
+    .element(screen.getByPlaceholder("your name"))
+    .toHaveValue("Ryan Florence");
+});
+
 function App({ subject }: { subject: React.ReactNode }) {
   let [n, increment] = useState(0);
   return (
