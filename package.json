@@ -1,7 +1,7 @@
 {
   "name": "@ryanflorence/persist-form",
   "license": "MIT",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "Form persistence for browser applications",
   "author": "Ryan Florence <rpflorence@gmail.com>",
   "packageManager": "pnpm@9.6.0",
