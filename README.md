@@ -12,29 +12,65 @@ npm install @ryanflorence/persist-form
 
 ### Custom Element
 
+First register the custom element:
+
+```ts
+import "@ryanflorence/persist-form/html";
+```
+
+Then render it inside a form.
+
+```html
+<form>
+  <rf-persist-form key="some-form" />
+</form>
+```
+
+If no key is given, `window.location.pathname` is used.
+
+<summary>
+<details>Here's a copy/paste example to see it in action:</details>
+
 ```html
 <html>
-  <head>
-    <!-- include the module however you do -->
-    <script
-      type="module"
-      href="https://esm.sh/@ryanflorence/persist-form/html"
-    ></script>
-  </head>
   <body>
-    <form method="post">
-      <!-- render the custom element -->
-      <rf-persist-form key="login" />
+    <button>Toggle form</button>
 
-      <input name="name" />
-      <input name="email" type="email" />
-      <button type="submit">Submit</button>
-    </form>
+    <div id="target"></div>
+
+    <template id="my-form">
+      <form method="post" class="login-form">
+        <!-- rendering this persists the form across attach/detach -->
+        <rf-persist-form key="login" />
+
+        <input name="name" />
+        <input name="email" type="email" />
+        <button type="submit">Submit</button>
+      </form>
+    </template>
+
+    <script type="module">
+      // import the custom element
+      import "https://esm.sh/@ryanflorence/persist-form/html.js";
+
+      // some silly stuff to attach/detach a form from the dom to see it restore
+      document.querySelector("button").addEventListener("click", () => {
+        let target = document.querySelector("#target");
+        let form = document.querySelector(".login-form");
+        if (form) {
+          target.removeChild(form);
+        } else {
+          target.appendChild(
+            document.querySelector("#my-form").content.cloneNode(true),
+          );
+        }
+      });
+    </script>
   </body>
 </html>
 ```
 
-If no key is given, `window.location.pathname` is used.
+</summary>
 
 ### React Router Integration
 
